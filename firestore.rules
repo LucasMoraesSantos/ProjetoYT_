@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner() {
+      return isSignedIn() && request.resource.data.userId == request.auth.uid;
+    }
+
+    function isDocOwner() {
+      return isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    match /users/{userId} {
+      allow read, write: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    match /youtubeTokens/{docId} {
+      allow read, write: if false;
+    }
+
+    match /youtubeOAuthStates/{docId} {
+      allow read, write: if false;
+    }
+
+    match /videoPerformance/{docId} {
+      allow read: if isDocOwner();
+      allow write: if false;
+    }
+
+    match /performanceInsights/{docId} {
+      allow read: if isDocOwner();
+      allow write: if false;
+    }
+
+    match /appLogs/{docId} {
+      allow read: if isDocOwner();
+      allow write: if false;
+    }
+
+    match /{collection}/{docId} {
+      allow read, update, delete: if isDocOwner();
+      allow create: if isOwner();
+    }
+  }
+}
