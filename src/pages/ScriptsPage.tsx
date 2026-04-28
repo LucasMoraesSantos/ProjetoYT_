@@ -32,8 +32,21 @@ export function ScriptsPage() {
         >
           Revisar roteiro
         </button>
+        <button
+          className="rounded bg-emerald-700 px-4 py-2 text-white"
+          onClick={async () => {
+            try {
+              await functionsClient.generateMetadata({ scriptId: 'demo-script' });
+              toast.success('Metadata solicitada.');
+            } catch (error) {
+              toast.error((error as Error).message);
+            }
+          }}
+        >
+          Gerar títulos/descrição/tags
+        </button>
       </div>
-      <p className="text-sm text-slate-500">Editor, geração de títulos, descrição, tags e capítulos preparados para integração completa.</p>
+      <p className="text-sm text-slate-500">Fluxo preparado para gerar e revisar roteiro, além de metadata editorial via OpenAI no backend seguro.</p>
     </div>
   );
 }

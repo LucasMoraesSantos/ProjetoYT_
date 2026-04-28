@@ -25,5 +25,6 @@ async function authedFetch<T>(path: string, body: unknown): Promise<T> {
 export const functionsClient = {
   generateScript: (payload: unknown) => authedFetch('generateScript', payload),
   reviewScript: (payload: unknown) => authedFetch('reviewScript', payload),
+  generateMetadata: (payload: unknown) => authedFetch('generateMetadata', payload),
   scanYoutubeTrends: (payload: unknown) => authedFetch('scanYoutubeTrends', payload),
 };

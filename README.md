@@ -143,6 +143,12 @@ Configure no painel do Netlify (Site settings > Environment variables):
 - Funções privadas validam `Authorization: Bearer <firebase_id_token>`.
 - Chaves sensíveis apenas por Firebase Functions Secrets.
 
+
+## Segurança operacional (importante)
+- **Nunca** cole chaves reais em issues, PRs, prompts ou código-fonte.
+- Se uma chave for exposta, gere rotação imediata no provedor (OpenAI/Google Cloud) e substitua o secret no Firebase.
+- Mantenha apenas placeholders no `.env.example`.
+
 ## Collections modeladas
 - users
 - channels
