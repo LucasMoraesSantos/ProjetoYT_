@@ -126,6 +126,7 @@ Configure no painel do Netlify (Site settings > Environment variables):
 - VITE_FIREBASE_STORAGE_BUCKET
 - VITE_FIREBASE_MESSAGING_SENDER_ID
 - VITE_FIREBASE_APP_ID
+- VITE_FIREBASE_MEASUREMENT_ID (opcional, para Analytics)
 - VITE_FUNCTIONS_BASE_URL
 
 ## 12) Como usar o sistema
